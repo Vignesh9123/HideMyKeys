@@ -1,0 +1,2 @@
+- Implement AES encryption on client side before sending to server and decrypt on client(UI or CLI) side before using.
+- Create a CLI for management of secrets, projects and also to expose secrets to apps.
