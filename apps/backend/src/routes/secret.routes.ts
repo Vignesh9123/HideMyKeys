@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, type Express } from "express";
 import {
   createEnvironmentSecret,
   deleteSecret,
@@ -6,10 +6,10 @@ import {
 } from "../controllers/secret.controller";
 import { authenticate } from "../middlewares/auth.middleware";
 
-const router = Router();
+const secretRoutes = Router();
 
-router.get("/environments/:environmentId/secrets", authenticate, getEnvironmentSecrets);
-router.post("/environments/:environmentId/secrets", authenticate, createEnvironmentSecret);
-router.delete("/secrets/:id", authenticate, deleteSecret);
+secretRoutes.get("/environment/:environmentId", authenticate, getEnvironmentSecrets);
+secretRoutes.post("/environment/:environmentId", authenticate, createEnvironmentSecret);
+secretRoutes.delete("/:secretId", authenticate, deleteSecret);
 
-export default router;
+export default secretRoutes;

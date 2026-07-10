@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, type Express } from "express";
 import {
   createProjectEnvironment,
   deleteEnvironment,
@@ -6,10 +6,11 @@ import {
 } from "../controllers/environment.controller";
 import { authenticate } from "../middlewares/auth.middleware";
 
-const router = Router();
+const environmentRoutes = Router();
 
-router.get("/projects/:projectId/environments", authenticate, getProjectEnvironments);
-router.post("/projects/:projectId/environments", authenticate, createProjectEnvironment);
-router.delete("/environments/:id", authenticate, deleteEnvironment);
+environmentRoutes.get("/project/:projectId", authenticate, getProjectEnvironments);
+environmentRoutes.post("/project/:projectId", authenticate, createProjectEnvironment);
+environmentRoutes.delete("/:id", authenticate, deleteEnvironment);
 
-export default router;
+export default environmentRoutes;
+
