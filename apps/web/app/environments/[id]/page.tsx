@@ -30,7 +30,7 @@ export default function EnvironmentView({ params }: { params: Promise<{ id: stri
     }
 
     try {
-      const res = await fetch(`http://localhost:3001/environments/${environmentId}/secrets`, {
+      const res = await fetch(`http://localhost:3001/secrets/environment/${environmentId}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
 
@@ -59,7 +59,7 @@ export default function EnvironmentView({ params }: { params: Promise<{ id: stri
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:3001/environments/${environmentId}/secrets`, {
+      const res = await fetch(`http://localhost:3001/secrets/environment/${environmentId}`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",

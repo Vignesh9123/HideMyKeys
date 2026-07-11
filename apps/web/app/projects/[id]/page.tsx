@@ -27,7 +27,7 @@ export default function ProjectView({ params }: { params: Promise<{ id: string }
     }
 
     try {
-      const res = await fetch(`http://localhost:3001/projects/${projectId}/environments`, {
+      const res = await fetch(`http://localhost:3001/environments/project/${projectId}`, {
         headers: { "Authorization": `Bearer ${token}` }
       });
 
@@ -56,7 +56,7 @@ export default function ProjectView({ params }: { params: Promise<{ id: string }
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:3001/projects/${projectId}/environments`, {
+      const res = await fetch(`http://localhost:3001/environments/project/${projectId}`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
